@@ -7,8 +7,8 @@ DEFAULT_MIN_MEM="2G"
 DEFAULT_MAX_MEM="4G"
 
 # Parse command line arguments
-MIN_MEM_ARG=${2:-$DEFAULT_MIN_MEM}
-MAX_MEM_ARG=${3:-$DEFAULT_MAX_MEM}
+MIN_MEM_ARG=${1:-$DEFAULT_MIN_MEM}
+MAX_MEM_ARG=${2:-$DEFAULT_MAX_MEM}
 
 echo "Building Docker image: ${IMAGE_NAME}:${IMAGE_TAG}"
 echo "Memory allocated: MIN_MEM=${MIN_MEM_ARG}, MAX_MEM=${MAX_MEM_ARG}"
