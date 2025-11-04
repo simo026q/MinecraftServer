@@ -1,0 +1,30 @@
+name: minecraft-server
+
+services:
+  minecraft:
+    build:
+      context: . # Assumes Dockerfile is in the current directory
+      args:
+        MINECRAFT_VERSION: "1.21.10"
+    container_name: minecraft-server
+    restart: unless-stopped
+    ports:
+      - "25565:25565" # HostPort:ContainerPort - Minecraft server default port
+
+    volumes:
+      - data:/app
+
+    environment:
+      # These environment variables will be used by the CMD in your Dockerfile.
+      - MIN_MEM=2G # Example: Allocate 2GB minimum RAM
+      - MAX_MEM=4G # Example: Allocate 4GB maximum RAM
+
+volumes:
+  data:
+
+networks:
+  default:
+    # This implicitly creates a default bridge network.
+    # You could define custom networks here if you had multiple services
+    # that needed to communicate specifically.
+    driver: bridge
